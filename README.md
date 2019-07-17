@@ -1,24 +1,38 @@
-# README
+# Rails Gems
+List of various useful gems by Rails -> https://rubygems.org/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Active storage - Uploading Image 
+1. Download Active Storage -> rails active_storage:install , ``rails db:migrate``
+2. Create a scaffold ``rails db:migrate``
+3. Change the ``_form.html.erb``
+    ```ruby
+    <div class="field">
+        <%= form.label :image %>
+        <%= form.file_field :image %>
+    </div>
+    ```
+4. Change the Model -> ``show.html.erb``
+    ```ruby
+    <div class="image">
+        <%= image_tag(@logo.image) %>
+    </div>
+    ```
+4. Change Controller to permit image
+    ```
+    def logo_params
+      params.require(:logo).permit(:title, :caption, :image)
+    end
+    ```
+5. Would be different with ``devise`` -> different Users
 
-Things you may want to cover:
 
-* Ruby version
+---
 
-* System dependencies
+## Running Rails Application
+``rails s OR rails server``
 
-* Configuration
+## Running Rails console - DB
+``rails c``
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Creating new Rails Application
+``rails new {project-name}``
